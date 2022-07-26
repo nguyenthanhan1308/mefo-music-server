@@ -1,6 +1,6 @@
 import express from "express";
-import { createSong, getAllSongs } from "../controllers/song.controllers";
-import { deleteSongByID } from './../controllers/song.controllers';
+import { createSong, getAllSongs } from "../controllers/song.controllers.js";
+import { deleteSongByID } from './../controllers/song.controllers.js';
 
 const router = express.Router();
 

@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import "dotenv/config";
 import logger from "morgan";
 import bodyParser from 'body-parser';
-import mainRoutes from "./server/routes/main";
+import router from "./server/routes/main.js";
 import cors from "cors";
 
 const PORT = process.env.PORT || 5001;
@@ -15,7 +15,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger("dev"));
-app.use("/api/", mainRoutes);   
+app.use("/api/", router);   
 
 mongoose
     .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })

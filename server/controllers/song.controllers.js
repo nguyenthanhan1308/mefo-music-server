@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Song from "../models/song.models";
+import Song from "../models/song.models.js";
 
 // create new cause
 export function createSong (req, res) {
