@@ -6,8 +6,7 @@ import bodyParser from 'body-parser';
 import mainRoutes from "./server/routes/main";
 import cors from "cors";
 
-
-const port = 3333;
+const PORT = process.env.PORT || 5001;
 const mongoURI = process.env.MONGO_CONNECT;
 
 const app = express();
@@ -25,9 +24,7 @@ mongoose
     })
     .catch(err => console.log("Error connecting to MongoDB: " + err.message));
 
-app.listen(process.env.PORT || port, () => {
-    console.log("listening on port " + port);
-});
+app.listen(PORT);
 
 app.get("/", (req, res) => {
     res.status(200).json({
