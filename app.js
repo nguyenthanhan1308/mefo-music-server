@@ -1,19 +1,20 @@
+// import
 import express from 'express';
 import mongoose from "mongoose";
 import "dotenv/config";
 import logger from "morgan";
-import bodyParser from 'body-parser';
 import router from "./server/routes/main.js";
 import cors from "cors";
-
+// main
 const PORT = process.env.PORT || 5001;
 const mongoURI = process.env.MONGO_CONNECT;
 
 const app = express();
+// CORS for 3rd party usage
 app.use(cors());
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(logger("dev"));
 app.use("/api/", router);   
 

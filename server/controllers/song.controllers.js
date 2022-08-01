@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import Song from "../models/song.models.js";
 
-// create new cause
+// create new song
 export function createSong (req, res) {
   const song = new Song({
     _id: mongoose.Types.ObjectId(),
@@ -26,7 +26,7 @@ export function createSong (req, res) {
       });
     });
 }
-
+// get all song from songs collection
 export function getAllSongs (req, res) {
   Song.find()
   .select('_id title src')
@@ -45,7 +45,7 @@ export function getAllSongs (req, res) {
     });
   });
 }
-
+// delete song by ID
 export function deleteSongByID (req, res) {
   const deleteID = req.body._id;
   Song.deleteOne({ _id: deleteID }).then(() => {
