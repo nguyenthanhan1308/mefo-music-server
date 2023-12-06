@@ -1,14 +1,8 @@
 import mongoose, { Types } from "mongoose";
 import Song from "../models/song.models.ts";
 
-type Body = {
-	_id: string;
-	title: string;
-	src: string;
-};
-
 type Request = {
-	body: Body;
+	body: Song;
 };
 
 type Song = {
