@@ -1,13 +1,13 @@
 // import
 import express from 'express';
-import mongoose from "mongoose";
+import mongoose, { ConnectOptions }  from "mongoose";
 import "dotenv/config";
 import logger from "morgan";
-import router from "./server/routes/main.js";
+import router from "./server/routes/main.ts";
 import cors from "cors";
 // main
-const PORT = process.env.PORT || 5001;
-const mongoURI = process.env.MONGO_CONNECT;
+const PORT = process.env.PORT || 3000;
+const mongoURI : string = `${process.env.MONGO_CONNECT}`;
 
 const app = express();
 // CORS for 3rd party usage
@@ -17,9 +17,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(logger("dev"));
 app.use("/api/", router);   
-
+-+
 mongoose
-    .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true } as ConnectOptions)
     .then(() => {
         console.log("Connected to MongoDB");
     })
